@@ -1,0 +1,243 @@
+*{box-sizing:border-box;font-family:"Poppins",sans-serif}
+html,body{height:100%;margin:0}
+body{
+  display:flex;
+  background:url("bg-sekolah.jpg") center/cover no-repeat fixed;
+  color:#222;
+}
+.hidden{display:none!important}
+
+/* SIDEBAR */
+.sidebar{
+  width:260px;
+  background:rgba(15,167,154,0.95);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:20px;
+}
+.logo-sidebar{width:100px;display:block;margin:0 auto 20px;}
+.nav-btn{
+  background:none;
+  border:none;
+  color:#fff;
+  text-align:left;
+  padding:12px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:6px;
+  transition:0.2s;
+  font-size:0.95rem;
+}
+.nav-btn:hover,.nav-btn.active{background:#0cc0b0;}
+.logout{
+  background:#0a8b7f;
+  color:#fff;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  width:100%;
+  margin-top:10px;
+}
+
+/* HUBUNGI KAMI */
+.hubungi-box{
+  background:#0fa79a;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+  color:#fff;
+  font-size:0.9rem;
+  margin-top:10px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+.hubungi-box h4{margin:5px 0 8px 0;font-weight:600;}
+.hubungi-box p{margin:0;line-height:1.4;}
+
+/* MAIN */
+.main{
+  flex:1;
+  padding:24px;
+  overflow-y:auto;
+  backdrop-filter:blur(6px);
+}
+.header{display:flex;justify-content:flex-end;margin-bottom:15px;}
+.clock{font-weight:600;color:#006666;}
+
+.card{
+  background:rgba(255,255,255,0.92);
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom:16px;
+}
+.center-title{text-align:center;font-size:1.2rem;margin-top:0;margin-bottom:15px;}
+
+/* LOGIN */
+.login-card{max-width:340px;margin:10vh auto;text-align:center;backdrop-filter:blur(6px);}
+.login-logo{width:120px;margin-bottom:20px;}
+.login-box input{
+  width:100%;padding:10px;border:1px solid #d7eae9;
+  border-radius:8px;margin-bottom:10px;font-size:1rem;
+}
+.login-box button{
+  width:100%;padding:10px;border:none;border-radius:8px;
+  background:#0fa79a;color:#fff;font-weight:600;cursor:pointer;
+}
+.login-box button:hover{background:#0cc0b0;}
+
+/* FORM */
+.form-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-bottom:10px;
+}
+input,select,button{
+  padding:10px;
+  border:1px solid #d7eae9;
+  border-radius:8px;
+  font-size:1rem;
+}
+
+/* khusus: tombol set mapel */
+#setMapelBtn { background:#0fa79a; color:white; border:none; cursor:pointer; padding:10px 12px; border-radius:8px; }
+#setMapelBtn:hover{ background:#0cc0b0; }
+
+/* sembunyikan input RFID dari tampilan tapi tetap focusable */
+.rfid-hidden{
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* TABLE */
+.table-container{overflow-x:auto;margin-top:10px;}
+table{width:100%;border-collapse:collapse;}
+th,td{border:1px solid #e6f3f2;padding:10px;text-align:left;font-size:0.92rem;}
+th{background:#0fa79a;color:#fff;font-size:1rem;}
+tr:nth-child(even){background:#f9fdfc;}
+td:first-child{font-weight:bold;}
+td:nth-child(2){font-weight:600;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  body{flex-direction:column;}
+  .sidebar{width:100%;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;}
+  .main{padding:16px;}
+  th,td{font-size:0.8rem;}
+}
+.export-sidebar {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+.export-sidebar h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.export-sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #0fa79a;
+  color: #fff;
+  cursor: pointer;
+}
+.export-sidebar button:disabled {
+  background: #999;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.export-sidebar button:hover:not(:disabled) {
+  background: #0cc0b0;
+}
+/* Sembunyikan blok Hubungi di sidebar (tetap ada di HTML, aman) */
+.sidebar .hubungi-box,
+.sidebar .contact,
+.sidebar .contact-box,
+.sidebar .contact-info {
+  display: none !important;
+}
+/* Footer kontak di bawah-tengah */
+.site-footer {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15,167,154,0.95); /* sesuaikan warna */
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  z-index: 9999;
+  font-size: 0.95rem;
+  max-width: 920px;
+  width: calc(100% - 40px);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+.site-footer a { color: #fff; text-decoration: underline; }
+.site-footer .footer-inner { display:flex; gap:18px; align-items:center; }
+.site-footer .f-left, .site-footer .f-center { line-height:1.25; }
+
+/* Mobile: jadikan footer statis di bawah konten */
+@media (max-width: 900px) {
+  .site-footer {
+    position: static;
+    transform: none;
+    width: 100%;
+    border-radius: 8px;
+    margin: 12px 0;
+  }
+  body { padding-bottom: 0; } /* optional */
+}
+
+/* ===================== PRINT STYLES ===================== */
+/* Pada preview cetak hanya tampilkan area laporan yang diminta.
+   class 'print-guru' atau 'print-tu' ditetapkan via JS sebelum window.print() */
+@media print {
+  /* sembunyikan semua elemen global */
+  body * { visibility: hidden !important; }
+  /* tampilkan area laporan guru */
+  body.print-guru #guruResult, body.print-guru #guruResult * {
+    visibility: visible !important;
+
+/* sembunyikan kolom "Aksi" hanya untuk Laporan Guru saat cetak */
+  body.print-guru #guruResult table th:last-child,
+  body.print-guru #guruResult table td:last-child {
+    display: none !important;
+  
+  }
+  /* tampilkan area laporan tu */
+  body.print-tu #tuResult, body.print-tu #tuResult * {
+    visibility: visible !important;
+  }
+  /* atur posisi dan style cetak */
+  #guruResult, #tuResult {
+    position: absolute;
+    top: 10mm;
+    left: 10mm;
+    right: 10mm;
+    font-size: 12pt;
+  }
+  /* hapus background & elemen fixed */
+  .site-footer, .sidebar, .header, .nav-btn, .login-card, .export-sidebar { display: none !important; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid #000; padding: 6px; color: #000; background: none !important; }
+  th { background: #000; color: #fff; }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RFID Akademik – SMK Bhakti Praja Talang</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <div class="sidebar hidden" id="sidebar">
+    <div class="sidebar-top">
+      <img src="logo-smk.png" alt="Logo SMK" class="logo-sidebar" />
+      <button class="nav-btn active" onclick="showPage('absensi')">📋 Absensi Siswa</button>
+      <button class="nav-btn" onclick="showPage('guru')">👩‍🏫 Laporan Guru</button>
+      <button class="nav-btn" onclick="showPage('tu')">🧾 Rekapan TU</button>
+    </div>
+
+    <div class="export-sidebar">
+      <h4>📤 Ekspor Data</h4>
+      <button id="btnPdf" onclick="exportPDF(currentPage)" disabled>📄 PDF</button>
+      <button id="btnCsv" onclick="exportCSV(currentPage)" disabled>📊 CSV</button>
+      <button id="btnPrint" onclick="printReport(currentPage)" disabled>🖨️ Cetak</button>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="hubungi-box">
+        <h4>Hubungi Kami</h4>
+        <p>SMK Bhakti Praja Talang<br>
+        Jl. Raya Talang No.10, Tegal<br>
+        📧 smkbptalang@gmail.com<br>
+        📱 IG: @smkbptalang<br>
+        📘 FB: SMK Bhakti Praja Talang</p>
+      </div>
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main" id="main">
+    <div class="header">
+      <div class="clock" id="clock"></div>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="loginPage" class="card login-card">
+      <img src="logo-smk.png" class="login-logo" alt="Logo SMK" />
+      <div class="login-box">
+        <input id="username" placeholder="Username" /><br>
+        <input id="password" type="password" placeholder="Password" /><br>
+        <button onclick="login()">Masuk</button>
+      </div>
+    </div>
+
+    <!-- HALAMAN ABSENSI -->
+    <div id="absensiPage" class="card hidden">
+      <h2 class="center-title">Data Siswa SMK Bhakti Praja Talang</h2>
+      <div class="form-row">
+        <label>Tanggal</label>
+        <input id="absenDate" type="date" />
+        <label>Mata Pelajaran</label>
+        <input id="absenMapel" type="text" placeholder="Isi Mata Pelajaran Sebelum Scan" />
+        <button id="setMapelBtn" onclick="setMapelAndFocus()">Set Mapel & Fokus Scan</button>
+      </div>
+
+      <!-- input RFID disembunyikan (tetap fokusable) -->
+      <input id="rfidInput" placeholder="tempel kartu RFID" aria-label="rfid-input" class="rfid-hidden" />
+
+      <button onclick="manualAdd()">Tambah Manual</button>
+      <div id="absensiResult" class="table-container"></div>
+    </div>
+
+    <!-- HALAMAN GURU -->
+    <div id="guruPage" class="card hidden">
+      <h2 class="center-title">Laporan Guru</h2>
+      <div class="form-row">
+        <label>Tanggal</label><input type="date" id="guruDate">
+        <!-- Bulan dihilangkan sesuai permintaan -->
+        <label>Kelas</label><input type="text" id="guruClass" placeholder="contoh XI TKJ 1">
+        <button onclick="runGuruReport()">Tampilkan</button>
+      </div>
+      <div id="guruResult" class="table-container"></div>
+    </div>
+
+    <!-- HALAMAN TU -->
+    <div id="tuPage" class="card hidden">
+      <h2 class="center-title">Rekapan TU</h2>
+      <div class="form-row">
+        <label>Tanggal</label><input type="date" id="tuDate">
+        <!-- Bulan dihilangkan sesuai permintaan -->
+        <label>Kelas</label><input type="text" id="tuClass" placeholder="contoh XI TKJ 1">
+        <label>Keterangan</label>
+        <select id="tuKet">
+          <option value="">Semua</option>
+          <option value="H">Hadir</option>
+          <option value="I">Izin</option>
+          <option value="S">Sakit</option>
+          <option value="A">Alfa</option>
+        </select>
+        <button onclick="runTUReport()">Tampilkan</button>
+      </div>
+      <div id="tuResult" class="table-container"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- FOOTER KONTAK (letakkan di bawah-tengah) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="f-left">
+        <strong>SMK Bhakti Praja Talang</strong><br>
+        Jl. Raya Talang No. 10 — Senin–Jumat 08:00–16:00
+      </div>
+      <div class="f-center">
+        Email: <a href="mailto:smkbptalang@gmail.com">smkbptalang@gmail.com</a><br>
+        Instagram: <a href="https://instagram.com/smkbptalang" target="_blank" rel="noopener">@smkbptalang</a><br>
+        Facebook: <a href="https://facebook.com/SMKBhaktiPrajaTalang" target="_blank" rel="noopener">SMK Bhakti Praja Talang</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
